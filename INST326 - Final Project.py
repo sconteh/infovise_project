@@ -4,13 +4,17 @@ Samuel Conteh,
 """
 
 class User():
-    def __init__(self, username, password, name, age, gender, initial_balance = 0):
+    def __init__(self, username, password, education_level, major, minor, skills, name):
         self.username = username
         self.password = password
+        self.education_level = education_level
+        self.major = major 
+        self.minor = minor
+        self.skills = skills
         self.name = name
 
     # I have heard that this is not foolproof. Some considerations to improve security are:
-        # Hashed passwords, salted hashes, authentication libraries, password policies, 
+    # Hashed passwords, salted hashes, authentication libraries, password policies, 
     
     def authenticate(self, entered_password):
         return entered_password == self.password
@@ -21,6 +25,13 @@ class User():
             print("Password changed successfully!")
         else:
             print("Unable to change password: Incorrect old password.")
+
+class Jobs():
+    class GlassdoorJobs():
+    
+    class IndeedJobs():
+
+
 
 def access_user(users):
     print("Enter your username and password for the account you would like to access: ")
@@ -36,23 +47,27 @@ def access_user(users):
     
 def create_account():
     # Getting User Details
-    print("Before we can create a bank account, you must first create a username and password associat1e with it.\n")
+    print("\nAccount Creation")
+    print("----------------")
     
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
+    username = input("Enter your the username you would like to create your account with: ")
+    password = input("Enter your the password you would like to create your account with: ")
+    
     name = input("Enter your name: ")
-    age = int(input("Enter your age: "))
-    gender = input("Enter your gender: ")
+    major = input("Enter your declared or completed major: ")
+    minor = input("Enter your delcared or completed minor (enter 'none'if you do not have one): ")
+    # age = int(input("Enter your age: "))
+    # gender = input("Enter your gender: ")
 
-    user = User(username, password, name, age, gender) # creation of the instance of the user class  
+    user = User(username, password, major, minor, name) # creation of the instance of the user class  
     print("\nAccount Created!\n")
     user.display_details() # displaying the user information 
-    return user # returns the created use1r 
+    return user # returns the created user 
 
 def main():
-    print("\n*********************************")
-    print("* WELCOME TO INST BANK DATABASE *")
-    print("*********************************")
+    print("\n*********************")
+    print("* WELCOME TO INFOVISE *")
+    print("***********************")
 
     users = [] # list to store User instances  
 
@@ -88,3 +103,7 @@ def main():
 
         else:
             print("Invalid choice. Please select a valid option (1-5).") 
+
+if __name__ == "__main__":
+    main() # Call the main function if the script is executed directly
+    
