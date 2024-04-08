@@ -7,13 +7,13 @@ import sqlite3
 import hashlib
 
 class User():
-    def __init__(self, education_level, major, minor, skills, name):
-        self.education_level = education_level
+    def __init__(self, username, password, name, major, minor):
+        self.username = username
+        self.password = password 
+        self.name = name
         self.major = major 
         self.minor = minor
-        self.skills = skills
-        self.name = name
-
+    
     # I have heard that this is not foolproof. Some considerations to improve security are:
     # Hashed passwords, salted hashes, authentication libraries, password policies, 
     
@@ -21,10 +21,6 @@ class User():
     # class GlassdoorJobs():
     
     # class IndeedJobs():
-
-
-
-
 
 def create_account():
     print("\nAccount Creation")
@@ -36,12 +32,10 @@ def create_account():
     major = input("Enter your declared or completed major: ")
     minor = input("Enter your delcared or completed minor (enter 'none' if you do not have one): ")
 
-    # user = User(name, major, minor) # creation of the instance of the user class  
-    # print("\nAccount Created!\n")
-    # user.display_details() # displaying the user information 
-    # return user # returns the created user 
-
-    return (username, password, name, major, minor)
+    user = User(username, password, name, major, minor) # creation of the instance of the user class  
+    print("\nAccount Created!\n")
+    
+    return username, password, name, major, minor 
 def create_connection():
     # connect to the SQLite database 
     conn = sqlite3.connect("ischool_data.db") # connects to a ___ file
@@ -52,7 +46,7 @@ def create_database(conn):
     # creating the table 
     cur.execute("""
     CREATE TABLE IF NOT EXISTS ischool_data (
-            id INTEGER PRIMARY KEY
+            id INTEGER PRIMARY KEY,
             username VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
             name VARCHAR(255) NOT NULL,
@@ -83,6 +77,7 @@ def main(conn, username, password, name, major, minor):
     print("***********************")
 
     create_connection()
+    create_database(conn)
     insert_user(conn, username, password, name, major, minor)
     create_account()
 
