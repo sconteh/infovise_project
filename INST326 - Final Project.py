@@ -1,4 +1,4 @@
 """
 INST326 - Final Project - InfoVise
-Samuel Conteh, 
+Samuel Conteh, DeJon Young
 """
