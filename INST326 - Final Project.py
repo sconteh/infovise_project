@@ -3,10 +3,11 @@ INST326 - Final Project - InfoVise
 Samuel Conteh, 
 """
 
+import sqlite3
+import hashlib
+
 class User():
-    def __init__(self, username, password, education_level, major, minor, skills, name):
-        self.username = username
-        self.password = password
+    def __init__(self, education_level, major, minor, skills, name):
         self.education_level = education_level
         self.major = major 
         self.minor = minor
@@ -16,33 +17,78 @@ class User():
     # I have heard that this is not foolproof. Some considerations to improve security are:
     # Hashed passwords, salted hashes, authentication libraries, password policies, 
     
-class Jobs():
-    class GlassdoorJobs():
+# class Jobs():
+    # class GlassdoorJobs():
     
-    class IndeedJobs():
+    # class IndeedJobs():
+
+
+
+
 
 def create_account():
-    # Getting User Details
     print("\nAccount Creation")
     print("----------------")
     
-    name = input("Enter the name associated with this account (first and last): ")
+    username = input("Enter your new username: ")
+    password = ("Enter your new password: ")
+    name = input("Enter the name associated with this account: ")
     major = input("Enter your declared or completed major: ")
-    minor = input("Enter your delcared or completed minor (enter 'none'if you do not have one): ")
-    # age = int(input("Enter your age: "))
-    # gender = input("Enter your gender: ")
+    minor = input("Enter your delcared or completed minor (enter 'none' if you do not have one): ")
 
-    user = User(name, major, minor) # creation of the instance of the user class  
-    print("\nAccount Created!\n")
-    user.display_details() # displaying the user information 
-    return user # returns the created user 
+    # user = User(name, major, minor) # creation of the instance of the user class  
+    # print("\nAccount Created!\n")
+    # user.display_details() # displaying the user information 
+    # return user # returns the created user 
 
-def main():
-    print("\n*********************")
+    return (username, password, name, major, minor)
+def create_connection():
+    # connect to the SQLite database 
+    conn = sqlite3.connect("ischool_data.db") # connects to a ___ file
+    return conn
+
+def create_database(conn):
+    cur = conn.cursor() # the cursor for that connection is conn.cursor 
+    # creating the table 
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS ischool_data (
+            id INTEGER PRIMARY KEY
+            username VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL,
+            major VARCHAR(255) NOT NULL,
+            minor VARCHAR(255) NOT NULL
+    )
+    """)
+
+def insert_user(conn, username, password, name, major, minor):
+    # creates the cursor object associated with the database connection. It enables traversal over the 
+    # records in the database and execute SQL queries
+    cur = conn.cursor()
+
+    # insertion of the users information into the database
+    cur.execute("INSERT INTO ischool_data (username, password, name, major, minor) VALUES (?, ?, ?, ?, ?)", 
+                (username, password, name, major, minor))
+
+    username1, password1 = "mike123", hashlib.sha256("mikeisgreat333".encode()).hexdigest()
+    username2, password2 = "sam123", hashlib.sha256("samisgreat333".encode()).hexdigest()
+    print(username1, password1)
+    print(username2, password2)
+
+    conn.commit() # commits the current transaction to the database which ensures changes that are made are permanently stored
+
+def main(conn, username, password, name, major, minor):
+    print("\n***********************")
     print("* WELCOME TO INFOVISE *")
     print("***********************")
 
-    users = [] # list to store User instances  
+    create_connection()
+    insert_user(conn, username, password, name, major, minor)
+    create_account()
+
+
+    """
+        users = [] # list to store User instances  
 
     while True:
         print("\nOptions")
@@ -61,7 +107,12 @@ def main():
 
         else:
             print("Invalid choice. Please select a valid option (1-5).") 
+    
+    """
 
 if __name__ == "__main__":
-    main() # Call the main function if the script is executed directly
-    
+    conn = create_connection()
+    username, password, name, major, minor = create_account()
+    main(conn, username, password, name, major, minor) # Call the main function if the script is executed directly
+
+
