@@ -1,6 +1,6 @@
 """
 INST326 - Final Project - InfoVise
-Samuel Conteh, 
+Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
 """
 
 import sqlite3
