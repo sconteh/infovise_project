@@ -1,5 +1,6 @@
 """
 INST326 - Final Project - InfoVise
+<<<<<<< HEAD
 Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
 """
 
@@ -100,5 +101,4 @@ def main():
 
 if __name__ == "__main__":
     main() # Call the main function if the script is executed directly
-
 
