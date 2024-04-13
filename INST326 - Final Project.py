@@ -1,6 +1,5 @@
 """
 INST326 - Final Project - InfoVise
-<<<<<<< HEAD
 Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
 """
 
@@ -9,13 +8,13 @@ import hashlib
 
 class Database():
     def __init__(self):
-        self.conn = sqlite3.connect("ischool_data.db") # connects to a ___ file
+        self.conn = sqlite3.connect("ischool_database.db") # connects to a ___ file
 
-    def create_database(conn):
+    def create_table(conn):
         cur = conn.cursor() # the cursor for that connection is conn.cursor 
         # creating the table 
         cur.execute("""
-        CREATE TABLE IF NOT EXISTS ischool_data (
+        CREATE TABLE IF NOT EXISTS ischool_database (
                 id INTEGER PRIMARY KEY,
                 username VARCHAR(255) NOT NULL,
                 password VARCHAR(255) NOT NULL,
@@ -31,7 +30,7 @@ class Database():
         cur = self.conn.cursor()
 
         # insertion of the users information into the database
-        cur.execute("INSERT INTO ischool_data (username, password, name, major, minor) VALUES (?, ?, ?, ?, ?)", 
+        cur.execute("INSERT INTO ischool_database (username, password, name, major, minor) VALUES (?, ?, ?, ?, ?)", 
                     (user.username, user.password, user.name, user.major, user.minor))
 
         
@@ -56,20 +55,12 @@ class User():
         print("----------------")
     
         self.username = input("Enter your new username: ")
-        self.password = ("Enter your new password: ")
+        self.password = hashlib.sha256(input("Enter your new password: ").encode()).hexdigest()
         self.name = input("Enter the name associated with this account: ")
         self.major = input("Enter your declared or completed major: ")
         self.minor = input("Enter your delcared or completed minor (enter 'none' if you do not have one): ")
   
         print("\nAccount Created!\n")
-        
-    # I have heard that this is not foolproof. Some considerations to improve security are:
-    # Hashed passwords, salted hashes, authentication libraries, password policies, 
-    
-# class Jobs():
-    # class GlassdoorJobs():
-    
-    # class IndeedJobs():
 
 def main():
     print("\n***********************")
@@ -87,7 +78,8 @@ def main():
 
         choice = input("Enter your choice (1-2): ")
 
-        if choice == '1': # creating an account 
+        if choice == '1': # creating an account and inserting the user into the database
+
             created_user = User()
             created_user.create_account()
             users.append(created_user)
