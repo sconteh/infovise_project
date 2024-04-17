@@ -1,5 +1,6 @@
 """
 INST326 - Final Project - InfoVise
+<<<<<<< HEAD
 Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
 """
 
@@ -8,10 +9,11 @@ import hashlib
 
 class Database():
     def __init__(self):
-        self.conn = sqlite3.connect("ischool_database.db") # connects to a ___ file
+        self.conn = sqlite3.connect("ischool_database.db") # connects sqlite3 to the ischool database file
+        self.create_table() # create an instance of the singular table 
 
-    def create_table(conn):
-        cur = conn.cursor() # the cursor for that connection is conn.cursor 
+    def create_table(self):
+        cur = self.conn.cursor() # the cursor for that connection is conn.cursor 
         # creating the table 
         cur.execute("""
         CREATE TABLE IF NOT EXISTS ischool_database (
@@ -33,14 +35,13 @@ class Database():
         cur.execute("INSERT INTO ischool_database (username, password, name, major, minor) VALUES (?, ?, ?, ?, ?)", 
                     (user.username, user.password, user.name, user.major, user.minor))
 
-        
+        self.conn.commit() # commits the current transaction to the database which ensures changes that are made are permanently stored
+
         # Hardcoded users for testing
         # username1, password1 = "mike123", hashlib.sha256("mikeisgreat333".encode()).hexdigest()
         # username2, password2 = "sam123", hashlib.sha256("samisgreat333".encode()).hexdigest()
         # print(username1, password1)
         # print(username2, password2)
-
-        self.conn.commit() # commits the current transaction to the database which ensures changes that are made are permanently stored
 
 class User():
     def __init__(self):
@@ -50,12 +51,15 @@ class User():
         self.major = "" 
         self.minor = ""
     
+    def masked_password(self):
+        return '*', len(self.password)
+
     def create_account(self):
         print("\nAccount Creation")
         print("----------------")
     
         self.username = input("Enter your new username: ")
-        self.password = hashlib.sha256(input("Enter your new password: ").encode()).hexdigest()
+        self.password = input("Enter your new password: ")
         self.name = input("Enter the name associated with this account: ")
         self.major = input("Enter your declared or completed major: ")
         self.minor = input("Enter your delcared or completed minor (enter 'none' if you do not have one): ")
@@ -79,17 +83,17 @@ def main():
         choice = input("Enter your choice (1-2): ")
 
         if choice == '1': # creating an account and inserting the user into the database
-
+            
             created_user = User()
             created_user.create_account()
-            users.append(created_user)
+            created_database.insert_user(created_user)
         
         elif choice == '2': # exiting program
             print("Exiting program...")
             break
 
         else:
-            print("Invalid choice. Please select a valid option (1-5).") 
+            print("Invalid choice. Please select a valid option (1-2)") 
 
 if __name__ == "__main__":
     main() # Call the main function if the script is executed directly
