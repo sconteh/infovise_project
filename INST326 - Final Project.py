@@ -3,7 +3,7 @@ INST326 - Final Project - InfoVise
 <<<<<<< HEAD
 Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
 """
-
+import customtkinter
 import sqlite3
 import hashlib
 
@@ -66,13 +66,45 @@ class User():
   
         print("\nAccount Created!\n")
 
+def open_login_window():
+    app = customtkinter.CTk()
+    app.title("InfoVise Sign Up/Login Page")
+    app.geometry("500x350")
+    app.config(bg = '#4169E1')
+
+    font1 = ("Archivo", 25, "bold")
+    font2 = ("Roboto", 17, "bold")
+    font3 = ("Roboto", 13, "bold")
+    font4 = ("Roboto", 13, "bold", "underline")
+    
+    frame1 = customtkinter.CTkFrame(app, bg_color= '#4169E1', fg_color='#4169E1')
+    frame1.place(x = 0, y = 0)
+    image1 = PhotoImage(file="")
+    image1_label = Label(frame1, image=image1, bg='#4169E1')
+    image1_label.place(x =0, y = 0)
+
+    signup_label = customtkinter.CTkLabel(frame1, font=font1, text='Sign Up', text_color='', bg_color = '')                            
+    signup_label.place(x=280, y= 20)
+
+    username_entry = customtkinter.CTkEntry(frame1, font=font2, text_color='', fg_color='', bg_color='', border_color='', 
+                                            border_width=3, placeholder_text='Username', placeholder_text_color='', width=, height= ) 
+    username_entry.place(x=230, y=80)
+
+    password_entry =  customtkinter.CTkEntry(frame1, font=font2, fg_color='', text_color='', bg_color='')
+    password_entry.place(x=, y=)
+    app.mainloop()
+
+def run_program():
+    open_login_window()
+
+
 def main():
-    print("\n***********************")
-    print("* WELCOME TO INFOVISE *")
-    print("***********************")
+
+    # print("\n***********************")
+    # print("* WELCOME TO INFOVISE *")
+    # print("***********************")
 
     created_database = Database()
-
     users = [] # list to store User instances (may be needed later)
 
     while True:
