@@ -1,10 +1,11 @@
 """
 INST326 - Final Project - InfoVise
-Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
+Samuel Conteh, Dejon Young
 """
 import customtkinter as ctk
 from tkinter import *
 from tkinter import messagebox
+from customtkinter import set_appearance_mode
 from tkinter import filedialog
 # from customtkinter import filedialog, Label, PhotoImage
 import sqlite3
@@ -89,7 +90,7 @@ def select_directory():
 
 def download_login_image():
     # <a href="https://www.freepik.com/free-ai-image/futurism-perspective-digital-nomads-lifestyle_138709280.htm#fromView=search&page=1&position=0&uuid=0a802735-0108-4504-a4a6-36b7474cc29e">Image by freepik</a>
-    login_image_url = "https://www.freepik.com/free-ai-image/futurism-perspective-digital-nomads-lifestyle_138709280.htm#fromView=search&page=1&position=0&uuid=0a802735-0108-4504-a4a6-36b7474cc29e"
+    login_image_url = "https://img.freepik.com/free-photo/futurism-perspective-digital-nomads-lifestyle_23-2151252479.jpg?t=st=1713860901~exp=1713864501~hmac=0ad5c15f92f3429ad12db8d4f9c3009e7f6e08810be1f8ea06f5f9bfae1a82a3&w=360"
     response = requests.get(login_image_url)
     if response.status_code == 200:
         selected_directory = select_directory()
@@ -147,13 +148,14 @@ def open_login_window():
     app = ctk.CTk()
     app.title("InfoVise Sign Up/Login Page")
     app.geometry("450x360")
+    set_appearance_mode("dark")
     app.config(bg = '#4169E1')
 
-    font1 = ("Helvetica", 25, "bold")
-    font2 = ("Roboto", 17, "bold")
-    font3 = ("Roboto", 13, "bold")
-    font4 = ("Roboto", 13, "bold", "underline")
-    
+    font1 = ('Helvetica', 25, 'bold')
+    font2 = ('Roboto', 17, 'bold')
+    font3 = ('Roboto', 13, 'bold')
+    font4 = ('Roboto', 13, 'bold', 'underline')
+
     frame1 = ctk.CTkFrame(app, bg_color= '#4169E1', fg_color='#4169E1', width=470, height=360)
     frame1.place(x = 0, y = 0)
 
@@ -171,7 +173,7 @@ def open_login_window():
     password_entry = ctk.CTkEntry(frame1, font=font2, show = '*', fg_color='#6941E0', text_color='#fff', bg_color='#4169E1')
     password_entry.place(x=230, y=150)
 
-    signup_button = ctk.CTkButton(frame1, font=font2, text_color='#fff', text = 'Sign Up', fg_color ='#E0B941', hover_color = '#000680 ', bg_color='#121111', cursor='hand2', corner_radius=5, width=120)
+    signup_button = ctk.CTkButton(frame1, font=font2, text_color='#fff', text = 'Sign Up', fg_color ='#E0B941', hover_color = '#000680', bg_color='#121111', cursor='hand2', corner_radius=5, width=120)
     signup_button.place(x=230, y=220)
 
     login_button = ctk.CTkButton(frame1, font=font4, text_color='#00BF77', text='Login', fg_color='#4169E1', hover_color='#4169E1',cursor='hand2', width=40)
