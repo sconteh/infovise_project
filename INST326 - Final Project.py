@@ -1,11 +1,16 @@
 """
 INST326 - Final Project - InfoVise
-<<<<<<< HEAD
 Samuel Conteh, Dejon Young, Afaan Kamran, Jordan Lin
 """
-import customtkinter
+import customtkinter as ctk
+from tkinter import *
+from tkinter import messagebox
+from tkinter import filedialog
+# from customtkinter import filedialog, Label, PhotoImage
 import sqlite3
 import hashlib
+import requests
+import os
 
 class Database():
     def __init__(self):
@@ -66,40 +71,120 @@ class User():
   
         print("\nAccount Created!\n")
 
+"""
+def select_image_directory():
+    directory = filedialog.askdirectory()
+    if directory:
+        return directory
+    else:
+        print("No directory selected.")
+        return None
+
+"""
+
+name_of_login_file = ""
+
+def select_directory():
+    return filedialog.askdirectory()
+
+def download_login_image():
+    # <a href="https://www.freepik.com/free-ai-image/futurism-perspective-digital-nomads-lifestyle_138709280.htm#fromView=search&page=1&position=0&uuid=0a802735-0108-4504-a4a6-36b7474cc29e">Image by freepik</a>
+    login_image_url = "https://www.freepik.com/free-ai-image/futurism-perspective-digital-nomads-lifestyle_138709280.htm#fromView=search&page=1&position=0&uuid=0a802735-0108-4504-a4a6-36b7474cc29e"
+    response = requests.get(login_image_url)
+    if response.status_code == 200:
+        selected_directory = select_directory()
+        if selected_directory:
+            default_filename = "default_image.jpg"  # Default filename
+            selected_filename = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPEG files", "*.jpg"), ("All files", "*.*")], initialdir=selected_directory, initialfile=default_filename)
+            if selected_filename:
+                with open(selected_filename, 'wb') as file:
+                    file.write(response.content)
+                print("Image downloaded successfully.")
+                name_of_login_file = selected_filename
+                return name_of_login_file  # Return the selected filename for further use
+            else:
+                print("Image download canceled by user.")
+                return None  # Return None if download is canceled
+        else:
+            print("No directory selected. Image download canceled.")
+            return None  # Return None if no directory selected
+    """
+def download_login_image():
+    # <a href="https://www.freepik.com/free-ai-image/futurism-perspective-digital-nomads-lifestyle_138709280.htm#fromView=search&page=1&position=0&uuid=0a802735-0108-4504-a4a6-36b7474cc29e">Image by freepik</a>
+    login_image_url = "https://www.freepik.com/free-ai-image/futurism-perspective-digital-nomads-lifestyle_138709280.htm#fromView=search&page=1&position=0&uuid=0a802735-0108-4504-a4a6-36b7474cc29e"
+    
+    file_name = os.path.basename(login_image_url) # Get the filename from the URL
+    save_path = os.path.join(save_path, file_name)  # Define the full path to save the image
+    response = requests.get(login_image_url) # send a get request to the website in which we got the login image from
+
+    # check if the request was successful (which is represented by status code 200)
+    if response.status_code == 200:
+        image_content = response.content # access the content within the image 
+
+        with open("image.jpg", "wb") as file: # save the image locally (within the individual device)
+            file.write(image_content)
+
+        # Open the image file
+        try:
+            image = Image.open("sign_in_page_image.jpg")
+            tk_image = ImageTk.PhotoImage(image) # converts the image to a format suitable for Tkinter
+
+        except Exception as e:
+            print("Error loading image:", e) # loads a blank placeholder image if there's an error with loading the intended image file
+            image = Image.new("RGB", (100, 100), "white") # Create a blank white image (you can adjust the size as needed)
+
+            tk_image = ImageTk.PhotoImage(image)
+
+            # Display the image in a Tkinter label or canvas
+            # Replace this with your code to display the image
+    else:
+        # if the request fails to go through, print an error message
+        print("Failed to download the image.")
+    """
 def open_login_window():
-    app = customtkinter.CTk()
+    download_login_image()
+    
+    app = ctk.CTk()
     app.title("InfoVise Sign Up/Login Page")
-    app.geometry("500x350")
+    app.geometry("450x360")
     app.config(bg = '#4169E1')
 
-    font1 = ("Archivo", 25, "bold")
+    font1 = ("Helvetica", 25, "bold")
     font2 = ("Roboto", 17, "bold")
     font3 = ("Roboto", 13, "bold")
     font4 = ("Roboto", 13, "bold", "underline")
     
-    frame1 = customtkinter.CTkFrame(app, bg_color= '#4169E1', fg_color='#4169E1')
+    frame1 = ctk.CTkFrame(app, bg_color= '#4169E1', fg_color='#4169E1', width=470, height=360)
     frame1.place(x = 0, y = 0)
-    image1 = PhotoImage(file="")
+
+    image1 = PhotoImage(file=name_of_login_file)
     image1_label = Label(frame1, image=image1, bg='#4169E1')
     image1_label.place(x =0, y = 0)
 
-    signup_label = customtkinter.CTkLabel(frame1, font=font1, text='Sign Up', text_color='', bg_color = '')                            
+    signup_label = ctk.CTkLabel(frame1, font=font1, text='Sign Up', text_color='#fff', bg_color = '#4169E1')                            
     signup_label.place(x=280, y= 20)
 
-    username_entry = customtkinter.CTkEntry(frame1, font=font2, text_color='', fg_color='', bg_color='', border_color='', 
-                                            border_width=3, placeholder_text='Username', placeholder_text_color='', width=, height= ) 
+    username_entry = ctk.CTkEntry(frame1, font=font2, text_color='#fff', fg_color='#6941E0', bg_color='#4169E1', border_color='#41B9E0', 
+                                            border_width=3, placeholder_text='Username', placeholder_text_color='#A3A3A3', width=200, height=500) 
     username_entry.place(x=230, y=80)
 
-    password_entry =  customtkinter.CTkEntry(frame1, font=font2, fg_color='', text_color='', bg_color='')
-    password_entry.place(x=, y=)
-    app.mainloop()
+    password_entry = ctk.CTkEntry(frame1, font=font2, show = '*', fg_color='#6941E0', text_color='#fff', bg_color='#4169E1')
+    password_entry.place(x=230, y=150)
 
+    signup_button = ctk.CTkButton(frame1, font=font2, text_color='#fff', text = 'Sign Up', fg_color ='#E0B941', hover_color = '#000680 ', bg_color='#121111', cursor='hand2', corner_radius=5, width=120)
+    signup_button.place(x=230, y=220)
+
+    login_button = ctk.CTkButton(frame1, font=font4, text_color='#00BF77', text='Login', fg_color='#4169E1', hover_color='#4169E1',cursor='hand2', width=40)
+    login_button.place(x=395, y=250)
+    app.mainloop()
+    
+ 
 def run_program():
     open_login_window()
 
 
 def main():
-
+    run_program()
     # print("\n***********************")
     # print("* WELCOME TO INFOVISE *")
     # print("***********************")
