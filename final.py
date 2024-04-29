@@ -1,4 +1,3 @@
-import uuid
 
 ischool_courses = {
         "INST101": {
@@ -286,14 +285,50 @@ ischool_courses = {
             "credits": "N/A"
         }
     }
+cyber_courses = {
+
+}
+
+data_courses = {
+
+}
+
+digital_courses = {
+
+}
+
+health_courses = {
+
+}
 
 class User():
     def __init__(self, username, password, fname, lname):
-
         self.username = username
         self.password = password
         self.fname = fname
         self.lname = lname
+        self.courses_taken = set()
+
+    def add_courses(self, ischool_courses):
+        courses_taken = set()
+        while True:
+            course_codes = input("Enter the course codes separated by commas (or 'done' to finish): ")
+            if course_codes.lower == 'done':
+                break
+            
+            # Split the input by commas and remove any leading/trailing spaces
+            split_course_codes = [code.strip() for code in course_codes.split(',')]
+
+            # Validate and add each course code to the courses_taken set
+            for x in split_course_codes:
+                if x in ischool_courses:
+                    course = ischool_courses[x]
+                    courses_taken.add(course)
+                    print(f"Course '{course['name']}' added.")
+                else:
+                    print(f"Invalid course code '{x}'. Please try again.")
+
+        self.courses_taken = courses_taken
 
     def authenticate(self, entered_password):
         return entered_password == self.password1
