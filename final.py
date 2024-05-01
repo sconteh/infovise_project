@@ -1,3 +1,4 @@
+import uuid
 
 ischool_courses = {
         "INST101": {
@@ -285,21 +286,6 @@ ischool_courses = {
             "credits": "N/A"
         }
     }
-cyber_courses = {
-
-}
-
-data_courses = {
-
-}
-
-digital_courses = {
-
-}
-
-health_courses = {
-
-}
 
 class User():
     def __init__(self, username, password, fname, lname):
@@ -313,17 +299,17 @@ class User():
         courses_taken = set()
         while True:
             course_codes = input("Enter the course codes separated by commas (or 'done' to finish): ")
-            if course_codes.lower == 'done':
+            if course_codes.lower() == 'done':
                 break
             
-            # Split the input by commas and remove any leading/trailing spaces
+            # split the input by commas and remove any leading/trailing spaces
             split_course_codes = [code.strip() for code in course_codes.split(',')]
 
-            # Validate and add each course code to the courses_taken set
+            # validate and add each course code to the courses_taken set
             for x in split_course_codes:
                 if x in ischool_courses:
                     course = ischool_courses[x]
-                    courses_taken.add(course)
+                    self.courses_taken.add(course)
                     print(f"Course '{course['name']}' added.")
                 else:
                     print(f"Invalid course code '{x}'. Please try again.")
@@ -331,7 +317,7 @@ class User():
         self.courses_taken = courses_taken
 
     def authenticate(self, entered_password):
-        return entered_password == self.password1
+        return entered_password == self.password
         
     def change_password(self, old_password, new_password):
         if self.authenticate(old_password):
@@ -345,14 +331,15 @@ class User():
         print(f"Personal Details of")
 
 
-def access_user(users):
+def access_user(main_users):
     print("Enter your username and password for the account you would like to access: ")
     entered_username = input("Username: ")
     entered_password = input("Password: ")
 
-    for person in users:
-        if person.username == entered_username and person.authenticate(entered_password):
-            return person
+    for created_user in main_users:
+        if created_user.username == entered_username and created_user.authenticate(entered_password):
+            print("Valid username and password.")
+            return created_user
             
     print("Invalid username or password. Please try again.")
     return None 
@@ -363,34 +350,45 @@ def create_account():
     print("* ACCOUNT CREATION - ENTER ALL INFORMATION AS SHOWN *")
     print("*********************************")
 
-    first_name = input("Enter your first name: ")
-    last_name = input("Enter your last name: ")
+    fname = input("Enter your first name: ")
+    lname = input("Enter your last name: ")
     username = input("Enter your username: ")
+    password = input("Enter your new password: ")
 
-    while True: 
-        first_entered_password = input("Enter your password: ")
-        second_entered_password = input("Enter your password again: ")
+    print("Entered username:", username)
+    print("Entered password:", password)
+
+    created_user = User( username, password, fname, lname) # creation of the instance of the user class  
+    print("\nAccount Created!\n")
+    return created_user
+
+    """
+        while True: 
+
+        username = input("Enter your username: ")
+        first_entered_password = input("Enter your password: ").strip()
+        second_entered_password = input("Enter your password again: ").strip()
 
         if first_entered_password == second_entered_password:
             created_user = User(first_name, last_name, username, first_entered_password) # creation of the instance of the user class  
-            print(f"\nAccount Created {first_name} {last_name}!\n")
-            # created_user.display_details() # displaying the user information
-        
+            print(f"\nAccount Created {first_name }{last_name}!\n")        
             return created_user # returns the created user 
 
         else:
-            while True:
-                print("Error: passwords do not match")
+            print("Error: passwords do not match")
+            while True: # if passwords do not match ask the user if they would like to try again?
                 password_choice = input("Do you want to try again? (yes/no): ")
                 if password_choice.lower() == 'yes':
                         break
                 elif password_choice.lower() == 'no':
                     print("Exiting Account Creation...")
                     return None # return none to indicate account creation was incomplete
-                
                 else:
                     print("Error: invalid option chosen")
         
+    
+    """
+
 def print_info_header():
     print("\n*********************************")
     print("* WELCOME TO INFOVISE DATABASE *")
@@ -408,7 +406,7 @@ def print_no_accounts():
     print("-----------------------------------------------------------------------")
 
 def main():
-    users = [] # list to store User instances (may be needed later)
+    main_users = [] # list to store User instances (may be needed later)
     print_info_header()
 
     while True:
@@ -417,11 +415,22 @@ def main():
         choice = input("Enter your choice (1-3): ")
 
         if choice == '1': # creating an account and inserting the user into the database
-            account_creation = create_account()
-            users.append(account_creation)
+            created_user = create_account()
+            main_users.append(created_user)
         
-        # elif choice == '2':
-            
+        elif choice == '2':
+            if main_users:
+                found_user = access_user(main_users)
+                if found_user:
+                    print("We have succesfully process the user for their username and password.")
+                    found_user.add_courses(ischool_courses)
+                else: 
+                    print("No matching account found.")
+            else:    
+                print("\n-----------------------------------------------------------------------")
+                print("No accounts found. An account must be created first before depositing")
+                print("-----------------------------------------------------------------------")
+                
         elif choice == '3': # exiting program
             print("Exiting program...")
             break
