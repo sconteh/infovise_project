@@ -1,291 +1,101 @@
-import uuid
 
 ischool_courses = {
-        "INST101": {
-        "name": "Bits and Bytes of Computer and Information Sciences",
-        "credits": "N/A"
-        },
-        "INST104": {
-            "name": "Design Across Campus",
-            "credits": "N/A"
-        },
-        "INST123": {
-            "name": "Databases for All",
-            "credits": "N/A"
-        },
-        "INST126": {
-            "name": "Introduction to Programming for Information Science",
-            "credits": "N/A"
-        },
-        "INST127": {
-            "name": "Introduction to Programming for Information Science Lab",
-            "credits": "N/A"
-        },
-        "INST151": {
-            "name": "Becoming A Social Media Influencer",
-            "credits": "N/A"
-        },
-        "INST152": {
-            "name": "\"Fake Checking\": Battling Misinformation and Disinformation in the Real World",
-            "credits": "N/A"
-        },
-        "INST153": {
-            "name": "Records Scandals & Data Vandals: Public & Private Sector Controversies Ripped From The Headlines",
-            "credits": "N/A"
-        },
-        "INST154": {
-            "name": "Apollo at 50",
-            "credits": "N/A"
-        },
-        "INST155": {
-            "name": "Social Networking",
-            "credits": "N/A"
-        },
-        "INST156": {
-            "name": "How NASA Sees the Earth",
-            "credits": "N/A"
-        },
-        "INST201": {
-            "name": "Introduction to Information Science",
-            "credits": "N/A"
-        },
-        "INST204": {
-            "name": "Designing Fair Systems",
-            "credits": "N/A"
-        },
-        "INST208": {
-            "name": "Special Topics in Information Studies",
-            "credits": "N/A"
-        },
-        "INST210": {
-            "name": "The Nuts & Bolts of Getting Hired",
-            "credits": "N/A"
-        },
-        "INST227": {
-            "name": "Fundamentals of Academic Peer Mentoring in Information Studies",
-            "credits": "N/A"
-        },
-        "INST228": {
-            "name": "Academic Peer Mentor Experience in Information Science",
-            "credits": "N/A"
-        },
-        "INST232": {
-            "name": "Health Justice: Investigating the Roles of Information in Preventing & Addressing Health Disparities",
-            "credits": "N/A"
-        },
-        "INST301": {
-            "name": "Introduction to Information Science",
-            "credits": "N/A"
-        },
-        "INST308": {
-            "name": "Education Abroad in Information Studies",
-            "credits": "N/A"
-        },
-        "INST309": {
-            "name": "Independent Study in Information Science",
-            "credits": "N/A"
-        },
-        "INST311": {
-            "name": "Information Organization",
-            "credits": "N/A"
-        },
-        "INST314": {
-            "name": "Statistics for Information Science",
-            "credits": "N/A"
-        },
-        "INST326": {
-            "name": "Object-Oriented Programming for Information Science",
-            "credits": "N/A"
-        },
-        "INST327": {
-            "name": "Database Design and Modeling",
-            "credits": "N/A"
-        },
-        "INST335": {
-            "name": "Organizations, Management and Teamwork",
-            "credits": "N/A"
-        },
-        "INST341": {
-            "name": "Introduction to Digital Curation",
-            "credits": "N/A"
-        },
-        "INST346": {
-            "name": "Technologies, Infrastructure and Architecture",
-            "credits": "N/A"
-        },
-        "INST352": {
-            "name": "Information User Needs and Assessment",
-            "credits": "N/A"
-        },
-        "INST354": {
-            "name": "Decision-Making for Information Science",
-            "credits": "N/A"
-        },
-        "INST362": {
-            "name": "User-Centered Design",
-            "credits": "N/A"
-        },
-        "INST363": {
-            "name": "Fundamentals of Technology Innovation",
-            "credits": "N/A"
-        },
-        "INST364": {
-            "name": "Human-Centered Cybersecurity",
-            "credits": "N/A"
-        },
-        "INST366": {
-            "name": "Privacy, Security and Ethics for Big Data",
-            "credits": "N/A"
-        },
-        "INST367": {
-            "name": "Prototyping and Development Studio",
-            "credits": "N/A"
-        },
-        "INST370": {
-            "name": "Information and Preparedness, Response and Recovery in Japan",
-            "credits": "N/A"
-        },
-        "INST371": {
-            "name": "Teaching and Learning in Information Studies",
-            "credits": "N/A"
-        },
-        "INST377": {
-            "name": "Dynamic Web Applications",
-            "credits": "N/A"
-        },
-        "INST380": {
-            "name": "Technology and Information Design: Do Good Now",
-            "credits": "N/A"
-        },
-        "INST388": {
-            "name": "\"Maker Movement\" Approach to Computing",
-            "credits": "N/A"
-        },
-        "INST389": {
-            "name": "Supervised Internship in Information Science",
-            "credits": "N/A"
-        },
-        "INST398": {
-            "name": "Special Topics in Information Studies",
-            "credits": "N/A"
-        },
-        "INST401": {
-            "name": "Design and Human Disability and Aging",
-            "credits": "N/A"
-        },
-        "INST402": {
-            "name": "Designing Patient-Centered Technologies",
-            "credits": "N/A"
-        },
-        "INST403": {
-            "name": "Computational Journalism",
-            "credits": "N/A"
-        },
-        "INST405": {
-            "name": "Game Design",
-            "credits": "N/A"
-        },
-        "INST406": {
-            "name": "Cross Disciplinary Communication Lab",
-            "credits": "N/A"
-        },
-        "INST407": {
-            "name": "Leading and Sustaining a Culture of Innovation",
-            "credits": "N/A"
-        },
-        "INST408": {
-            "name": "Special Topics in Information Science",
-            "credits": "N/A"
-        },
-        "INST410": {
-            "name": "Managing with Data and Simulations",
-            "credits": "N/A"
-        },
-        "INST414": {
-            "name": "Data Science Techniques",
-            "credits": "N/A"
-        },
-        "INST441": {
-            "name": "Information Ethics and Policy",
-            "credits": "N/A"
-        },
-        "INST442": {
-            "name": "Digital Curation Across Disciplines",
-            "credits": "N/A"
-        },
-        "INST443": {
-            "name": "Tools and Methods for Digital Curation",
-            "credits": "N/A"
-        },
-        "INST447": {
-            "name": "Data Sources and Manipulation",
-            "credits": "N/A"
-        },
-        "INST448": {
-            "name": "Digital Curation Research in Cultural Big Data Collections",
-            "credits": "N/A"
-        },
-        "INST450": {
-            "name": "Introduction to CRM in Salesforce",
-            "credits": "N/A"
-        },
-        "INST451": {
-            "name": "Consumer Health Informatics",
-            "credits": "N/A"
-        },
-        "INST452": {
-            "name": "Health Data Analytics",
-            "credits": "N/A"
-        },
-        "INST453": {
-            "name": "Project Management for Information Science",
-            "credits": "N/A"
-        },
-        "INST455": {
-            "name": "Information Assurance and Compliance",
-            "credits": "N/A"
-        },
-        "INST456": {
-            "name": "Risk Management Leadership in the Information Age",
-            "credits": "N/A"
-        },
-        "INST461": {
-            "name": "Emerging Technologies and Risk Management",
-            "credits": "N/A"
-        },
-        "INST462": {
-            "name": "Introduction to Data Visualization",
-            "credits": "N/A"
-        },
-        "INST463": {
-            "name": "Technology Socialprenuer",
-            "credits": "N/A"
-        },
-        "INST464": {
-            "name": "Decision Making for Cybersecurity",
-            "credits": "N/A"
-        },
-        "INST465": {
-            "name": "Design and Human Disability and Aging",
-            "credits": "N/A"
-        },
-        "INST466": {
-            "name": "Technology, Culture, and Society",
-            "credits": "N/A"
-        },
-        "INST467": {
-            "name": "Fundamentals of Cybersecurity for Policy Makers",
-            "credits": "N/A"
-        },
-        "INST470": {
-            "name": "Competitive Business Intelligence",
-            "credits": "N/A"
-        },
-        "INST490": {
-            "name": "Integrated Capstone for Information Science",
-            "credits": "N/A"
-        }
+        "INST101": {"name": "Bits and Bytes of Computer and Information Sciences", "credits": "N/A"},
+        "INST104": {"name": "Design Across Campus", "credits": "N/A"},
+        "INST123": {"name": "Databases for All", "credits": "N/A"},
+        "INST126": {"name": "Introduction to Programming for Information Science", "credits": "N/A"},
+        "INST127": {"name": "Introduction to Programming for Information Science Lab", "credits": "N/A"},
+        "INST151": {"name": "Becoming A Social Media Influencer", "credits": "N/A"}, 
+        "INST152": {"name": "\"Fake Checking\": Battling Misinformation and Disinformation in the Real World", "credits": "N/A"},
+        "INST153": {"name": "Records Scandals & Data Vandals: Public & Private Sector Controversies Ripped From The Headlines","credits": "N/A"},
+        "INST154": {"name": "Apollo at 50","credits": "N/A"},
+        "INST155": {"name": "Social Networking","credits": "N/A"},
+        "INST156": {"name": "How NASA Sees the Earth","credits": "N/A"},
+        "INST201": {"name": "Introduction to Information Science","credits": "N/A"},
+        "INST204": {"name": "Designing Fair Systems","credits": "N/A"},
+        "INST208": {"name": "Special Topics in Information Studies","credits": "N/A"},
+        "INST210": {"name": "The Nuts & Bolts of Getting Hired","credits": "N/A"},
+        "INST227": {"name": "Fundamentals of Academic Peer Mentoring in Information Studies","credits": "N/A"},
+        "INST228": {"name": "Academic Peer Mentor Experience in Information Science","credits": "N/A"},
+        "INST232": {"name": "Health Justice: Investigating the Roles of Information in Preventing & Addressing Health Disparities","credits": "N/A"},
+        "INST301": {"name": "Introduction to Information Science","credits": "N/A"},
+        "INST308": {"name": "Education Abroad in Information Studies","credits": "N/A"},
+        "INST309": {"name": "Independent Study in Information Science","credits": "N/A"},
+        "INST311": {"name": "Information Organization","credits": "N/A"},
+        "INST314": {"name": "Statistics for Information Science","credits": "N/A"},
+        "INST326": {"name": "Object-Oriented Programming for Information Science","credits": "N/A"},
+        "INST327": {"name": "Database Design and Modeling","credits": "N/A"},
+        "INST335": {"name": "Organizations, Management and Teamwork","credits": "N/A"},
+        "INST341": {"name": "Introduction to Digital Curation","credits": "N/A"},
+        "INST346": {"name": "Technologies, Infrastructure and Architecture","credits": "N/A"},
+        "INST352": {"name": "Information User Needs and Assessment","credits": "N/A"},
+        "INST354": {"name": "Decision-Making for Information Science","credits": "N/A"},
+        "INST362": {"name": "User-Centered Design","credits": "N/A"},
+        "INST363": {"name": "Fundamentals of Technology Innovation","credits": "N/A"},
+        "INST364": {"name": "Human-Centered Cybersecurity","credits": "N/A"},
+        "INST365": {"name" : "Ethical Hacking","credits": "N/A"},
+        "INST366": {"name": "Privacy, Security and Ethics for Big Data","credits": "N/A"},
+        "INST367": {"name": "Prototyping and Development Studio","credits": "N/A"},
+        "INST370": {"name": "Information and Preparedness, Response and Recovery in Japan","credits": "N/A"},
+        "INST371": {"name": "Teaching and Learning in Information Studies","credits": "N/A"},
+        "INST377": {"name": "Dynamic Web Applications","credits": "N/A"},
+        "INST380": {"name": "Technology and Information Design: Do Good Now","credits": "N/A"},
+        "INST388": {"name": "\"Maker Movement\" Approach to Computing","credits": "N/A"},
+        "INST389": {"name": "Supervised Internship in Information Science","credits": "N/A"},
+        "INST398": {"name": "Special Topics in Information Studies","credits": "N/A"},
+        "INST401": {"name": "Design and Human Disability and Aging","credits": "N/A"},
+        "INST402": {"name": "Designing Patient-Centered Technologies", "credits": "N/A"},
+        "INST403": {"name": "Computational Journalism","credits": "N/A"},
+        "INST405": {"name": "Game Design","credits": "N/A"},
+        "INST406": {"name": "Cross Disciplinary Communication Lab", "credits": "N/A"},
+        "INST407": {"name": "Leading and Sustaining a Culture of Innovation", "credits": "N/A"},
+        "INST408": {"name": "Special Topics in Information Science", "credits": "N/A"},
+        "INST410": {"name": "Managing with Data and Simulations", "credits": "N/A"},
+        "INST414": { "name": "Data Science Techniques", "credits": "N/A"},
+        "INST441": {"name": "Information Ethics and Policy", "credits": "N/A"},
+        "INST442": {"name": "Digital Curation Across Disciplines", "credits": "N/A"},
+        "INST443": {"name": "Tools and Methods for Digital Curation", "credits": "N/A"},
+        "INST447": {"name": "Data Sources and Manipulation", "credits": "N/A"},
+        "INST448": {"name": "Digital Curation Research in Cultural Big Data Collections", "credits": "N/A"},
+        "INST450": {"name": "Introduction to CRM in Salesforce", "credits": "N/A"},
+        "INST451": {"name": "Consumer Health Informatics", "credits": "N/A"},
+        "INST452": {"name": "Health Data Analytics", "credits": "N/A"},
+        "INST453": {"name": "Project Management for Information Science", "credits": "N/A"},
+        "INST455": {"name": "Information Assurance and Compliance", "credits": "N/A"},
+        "INST456": {"name": "Risk Management Leadership in the Information Age", "credits": "N/A"},
+        "INST461": {"name": "Emerging Technologies and Risk Management", "credits": "N/A"},
+        "INST462": {"name": "Introduction to Data Visualization", "credits": "N/A"}, 
+        "INST463": {"name": "Technology Socialprenuer", "credits": "N/A"},
+        "INST464": {"name": "Decision Making for Cybersecurity", "credits": "N/A"},
+        "INST465": {"name": "Design and Human Disability and Aging", "credits": "N/A"},
+        "INST466": {"name": "Technology, Culture, and Society", "credits": "N/A"},
+        "INST467": {"name": "Fundamentals of Cybersecurity for Policy Makers", "credits": "N/A"},
+        "INST470": {"name": "Competitive Business Intelligence", "credits": "N/A"},
+        "INST490": {"name": "Integrated Capstone for Information Science", "credits": "N/A"}
     }
+
+variable_classes = {
+    "INST341": {"name": "Introduction to Digital Curation","career_paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"], "credits": "N/A"},
+    "INST354": {"name": "Decision-Making for Information Science","career_paths": ["Artificial Intelligence/Machine Learning", "Data Analyst", "Data Engineer", "Data Scientist"],"credits": "N/A"},
+    "INST364": {"name": "Human-Centered Cybersecurity","career_paths": ["Cybersecurity Analyst", "Cybersecurity Engineer", "Ethical Hacker", "Information Security Analyst/Specialist"],"credits": "N/A"},
+    "INST365": {"name" : "Ethical Hacking","career_paths": ["Cybersecurity Analyst", "Cybersecurity Engineer", "Ethical Hacker", "Information Security Analyst/Specialist"],"credits": "N/A"},
+    "INST366": {"name": "Privacy, Security and Ethics for Big Data","career_paths": ["Cybersecurity Analyst", "Cybersecurity Engineer", "Ethical Hacker", "Information Security Analyst/Specialist"],"credits": "N/A"},
+    "INST367": {"name": "Prototyping and Development Studio","career_paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"],"credits": "N/A"},
+    "INST377": {"name": "Dynamic Web Applications","career_paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"],"credits": "N/A"},
+    "INST401": {"name": "Design and Human Disability and Aging","career_paths": ["Healthcare Data Analyst", "Healthtech Software Engineer", "IT Specialist"],"credits": "N/A"},
+    "INST402": {"name": "Designing Patient-Centered Technologies", "career_paths": ["Healthcare Data Analyst", "Healthtech Software Engineer", "IT Specialist"],"credits": "N/A"},
+    "INST414": { "name": "Data Science Techniques", "career_paths": ["Artificial Intelligence/Machine Learning", "Data Analyst", "Data Engineer", "Data Scientist"],"credits": "N/A"},
+    "INST441": {"name": "Information Ethics and Policy", "career_paths": ["Healthcare Data Analyst", "Healthtech Software Engineer", "IT Specialist"], "credits": "N/A"},
+    "INST442": {"name": "Digital Curation Across Disciplines", "career_paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"], "credits": "N/A"},
+    "INST443": {"name": "Tools and Methods for Digital Curation", "career paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"], "credits": "N/A"},
+    "INST447": {"name": "Data Sources and Manipulation", "career_paths": ["Artificial Intelligence/Machine Learning", "Data Analyst", "Data Engineer", "Data Scientist"], "credits": "N/A"},
+    "INST448": {"name": "Digital Curation Research in Cultural Big Data Collections", "career_paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"], "credits": "N/A"},
+    "INST452": {"name": "Health Data Analytics", "career_paths": ["Healthcare Data Analyst", "Healthtech Software Engineer", "IT Specialist"], "credits": "N/A"},
+    "INST462": {"name": "Introduction to Data Visualization", "career_paths": ["Artificial Intelligence/Machine Learning", "Data Analyst", "Data Engineer", "Data Scientist"], "credits": "N/A"}, 
+    "INST464": {"name": "Decision Making for Cybersecurity", "career_paths": ["Cybersecurity Analyst", "Cybersecurity Engineer", "Ethical Hacker", "Information Security Analyst/Specialist"], "credits": "N/A"},
+    "INST466": {"name": "Technology, Culture, and Society", "career_paths": ["Artificial Intelligence/Machine Learning", "Data Analyst", "Data Engineer", "Data Scientist", "Social Media Analyst", "UX/UI Development"], "credits": "N/A"},
+    "INST467": {"name": "Fundamentals of Cybersecurity for Policy Makers", "career_paths": ["Cybersecurity Analyst", "Cybersecurity Engineer", "Ethical Hacker", "Information Security Analyst/Specialist"], "credits": "N/A"},
+}
 
 class User():
     def __init__(self, username, password, fname, lname):
@@ -294,27 +104,25 @@ class User():
         self.fname = fname
         self.lname = lname
         self.courses_taken = set()
+        self.career_paths = set()
 
-    def add_courses(self, ischool_courses):
-        courses_taken = set()
+    def add_courses(self, variable_classes):
         while True:
-            course_codes = input("Enter the course codes separated by commas (or 'done' to finish): ")
+            course_codes = input("\nEnter the course codes separated by commas (or 'done' to finish): ")
             if course_codes.lower() == 'done':
                 break
             
             # split the input by commas and remove any leading/trailing spaces
-            split_course_codes = [code.strip() for code in course_codes.split(',')]
+            split_course_codes = [code.strip().upper() for code in course_codes.split(',')]
 
             # validate and add each course code to the courses_taken set
             for x in split_course_codes:
-                if x in ischool_courses:
-                    course = ischool_courses[x]
-                    self.courses_taken.add(course)
-                    print(f"Course '{course['name']}' added.")
+                if x in variable_classes:
+                    course_info = variable_classes[x]
+                    self.courses_taken.add(x)
+                    print(f"Course '{course_info['name']}' added to your account.")
                 else:
                     print(f"Invalid course code '{x}'. Please try again.")
-
-        self.courses_taken = courses_taken
 
     def authenticate(self, entered_password):
         return entered_password == self.password
@@ -330,6 +138,30 @@ class User():
         print("\n")
         print(f"Personal Details of")
 
+    def print_courses_taken(self):
+        if self.courses_taken:
+            print("Courses Taken:")
+            for course in self.courses_taken:
+                print(course)
+        else:
+            print("No courses taken yet.")
+            
+    def recommend_career_paths(self, variable_classes):
+        if self.courses_taken:
+            for course in self.courses_taken:
+                if course in variable_classes:
+                    possible_career_paths = variable_classes[course].get("career_paths", [])
+                    self.career_paths.update(possible_career_paths)
+
+            if self.career_paths:
+                print("\nRecommended Career Paths:")
+                for path in self.career_paths:
+                    print(path)
+            else:
+                print("No recommended career paths based on the courses taken.")
+        else:
+            print("No courses taken yet.")
+
 
 def access_user(main_users):
     print("Enter your username and password for the account you would like to access: ")
@@ -338,7 +170,7 @@ def access_user(main_users):
 
     for created_user in main_users:
         if created_user.username == entered_username and created_user.authenticate(entered_password):
-            print("Valid username and password.")
+            print("\nValid username and password. Signing in...")
             return created_user
             
     print("Invalid username or password. Please try again.")
@@ -362,33 +194,6 @@ def create_account():
     print("\nAccount Created!\n")
     return created_user
 
-    """
-        while True: 
-
-        username = input("Enter your username: ")
-        first_entered_password = input("Enter your password: ").strip()
-        second_entered_password = input("Enter your password again: ").strip()
-
-        if first_entered_password == second_entered_password:
-            created_user = User(first_name, last_name, username, first_entered_password) # creation of the instance of the user class  
-            print(f"\nAccount Created {first_name }{last_name}!\n")        
-            return created_user # returns the created user 
-
-        else:
-            print("Error: passwords do not match")
-            while True: # if passwords do not match ask the user if they would like to try again?
-                password_choice = input("Do you want to try again? (yes/no): ")
-                if password_choice.lower() == 'yes':
-                        break
-                elif password_choice.lower() == 'no':
-                    print("Exiting Account Creation...")
-                    return None # return none to indicate account creation was incomplete
-                else:
-                    print("Error: invalid option chosen")
-        
-    
-    """
-
 def print_info_header():
     print("\n*********************************")
     print("* WELCOME TO INFOVISE DATABASE *")
@@ -397,13 +202,22 @@ def print_info_header():
 def print_menu_options():
     print("\nOptions")
     print("1. Create a New Account")
-    print("2. Print User Details")
-    print("3. Exit Program")
+    print("2. Add Courses to Account")
+    print("3. Display Courses Taken")
+    print("4. Exit Program")
 
 def print_no_accounts(): 
     print("\n-----------------------------------------------------------------------")
     print("No accounts found. An account must be created first before depositing")
     print("-----------------------------------------------------------------------")
+def print_variable_classes(variable_classes):
+    print("For this program , we are only going to take into account the classes that can differentiate each Information Science Student from another.")
+    print("These essentially include the four cognate areas: Cybersecurity & Privacy, Data Science, Digital Curation, and Health Information")
+    
+    print("\nCognate Area Classes Offered:")
+    for course_code, course_info in variable_classes.items():
+        course_name = course_info["name"]
+        print(f"{course_code} - {course_name}")
 
 def main():
     main_users = [] # list to store User instances (may be needed later)
@@ -412,7 +226,7 @@ def main():
     while True:
         print_menu_options()
 
-        choice = input("Enter your choice (1-3): ")
+        choice = input("Enter your choice (1-4): ")
 
         if choice == '1': # creating an account and inserting the user into the database
             created_user = create_account()
@@ -422,8 +236,8 @@ def main():
             if main_users:
                 found_user = access_user(main_users)
                 if found_user:
-                    print("We have succesfully process the user for their username and password.")
-                    found_user.add_courses(ischool_courses)
+                    print_variable_classes(variable_classes)
+                    found_user.add_courses(variable_classes)
                 else: 
                     print("No matching account found.")
             else:    
@@ -431,7 +245,12 @@ def main():
                 print("No accounts found. An account must be created first before depositing")
                 print("-----------------------------------------------------------------------")
                 
-        elif choice == '3': # exiting program
+        elif choice == '3':
+            if main_users:
+                found_user = access_user(main_users)
+                if found_user:
+                    found_user.recommend_career_paths(variable_classes)
+        elif choice == '4': # exiting program
             print("Exiting program...")
             break
 
