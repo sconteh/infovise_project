@@ -98,6 +98,16 @@ variable_classes = {
 }
 
 class User():
+    """
+    Purpose: Holds all of the pertinent information of the user. 
+    Self: 
+        Username: the actual username of the user  
+        Password: the actual password of the user 
+        fname: the first name of the user 
+        lname: the last name of the user 
+        courses_taken: all the courses the user has taken
+        career_paths: the recommended career paths associated with the courses the user has taken 
+    """
     def __init__(self, username, password, fname, lname):
         self.username = username
         self.password = password
@@ -107,6 +117,12 @@ class User():
         self.career_paths = set()
 
     def add_courses(self, variable_classes):
+        """
+        Purpose: Adds the courses to the Users profile
+        Arguments:
+            variable_classes: reference to the variable_class dictionary (contains the classes that can 
+            differentiate InfoSci students)
+        """
         while True:
             course_codes = input("\nEnter the course codes separated by commas (or 'done' to finish): ")
             if course_codes.lower() == 'done':
@@ -120,25 +136,36 @@ class User():
                 if x in variable_classes:
                     course_info = variable_classes[x]
                     self.courses_taken.add(x)
-                    print(f"Course '{course_info['name']}' added to your account.")
+                    print(f"'{course_info['name']}' added to your account.")
                 else:
                     print(f"Invalid course code '{x}'. Please try again.")
 
     def authenticate(self, entered_password):
+        """
+        Purpose: Returns the entered password to the User class 
+        Arguments:
+            entered_password: the password entered by the user
+        """
         return entered_password == self.password
         
     def change_password(self, old_password, new_password):
+        """
+        Purpose: allows the user to change the password to their account.
+        Arguments:
+            old_password: the users old password
+            new_password: the password that the user would like to change to 
+        """
         if self.authenticate(old_password):
             self.password = new_password
             print("Password changed successfully!")
         else:
             print("Unable to change password: Incorrect old password.")
 
-    def display_details():
-        print("\n")
-        print(f"Personal Details of")
-
     def print_courses_taken(self):
+        """
+        Purpose: prints the courses that the user has taken 
+        Arguments: None 
+        """
         if self.courses_taken:
             print("Courses Taken:")
             for course in self.courses_taken:
@@ -147,6 +174,12 @@ class User():
             print("No courses taken yet.")
             
     def recommend_career_paths(self, variable_classes):
+        """
+        Purpose: recommends the career paths associated with the courses taken and puts it into the users account
+        Arguments:
+            variable_classes: reference to the variable_class dictionary (contains the classes that can 
+            differentiate InfoSci students)
+        """
         if self.courses_taken:
             for course in self.courses_taken:
                 if course in variable_classes:
@@ -164,6 +197,11 @@ class User():
 
 
 def access_user(main_users):
+    """
+    Purpose: helps access the specific account of the user. For this, the username and password is required  
+    Arguments: 
+        main_users: the list that the objects are being put in
+    """
     print("Enter your username and password for the account you would like to access: ")
     entered_username = input("Username: ")
     entered_password = input("Password: ")
@@ -177,6 +215,10 @@ def access_user(main_users):
     return None 
     
 def create_account():
+    """
+    Purpose: helps the user create their account (which is necessary for any of the other features)
+    Arguments: None
+    """
     # Getting User Details
     print("\n*********************************")
     print("* ACCOUNT CREATION - ENTER ALL INFORMATION AS SHOWN *")
@@ -195,25 +237,42 @@ def create_account():
     return created_user
 
 def print_info_header():
+    """
+    Purpose: Simple print statement to welcome the user 
+    Arguments: None 
+    """
     print("\n*********************************")
     print("* WELCOME TO INFOVISE DATABASE *")
     print("*********************************")
 
 def print_menu_options():
+    """
+    Purpose: Simple print statement to print the menu 
+    Arguments: None 
+    """
     print("\nOptions")
     print("1. Create a New Account")
-    print("2. Add Courses to Account")
-    print("3. Display Courses Taken")
-    print("4. Exit Program")
+    print("2. Change Password")
+    print("3. Print Available Classes")
+    print("4. Add Courses to Account")
+    print("5. Display Courses Taken")
+    print("6. Exit Program")
 
 def print_no_accounts(): 
+    """
+    Purpose: Simple print statement for when no accounts are found
+    Arguments: None 
+    """
     print("\n-----------------------------------------------------------------------")
     print("No accounts found. An account must be created first before depositing")
     print("-----------------------------------------------------------------------")
+
 def print_variable_classes(variable_classes):
-    print("For this program , we are only going to take into account the classes that can differentiate each Information Science Student from another.")
-    print("These essentially include the four cognate areas: Cybersecurity & Privacy, Data Science, Digital Curation, and Health Information")
-    
+    """
+    Purpose: Prints all of the classes that can differentiate Information Science students   
+    Arguments: reference to the variable_class dictionary (contains the classes that can 
+    differentiate InfoSci students)
+    """
     print("\nCognate Area Classes Offered:")
     for course_code, course_info in variable_classes.items():
         course_name = course_info["name"]
@@ -226,32 +285,53 @@ def main():
     while True:
         print_menu_options()
 
-        choice = input("Enter your choice (1-4): ")
+        choice = input("Enter your choice (1-5): ")
 
         if choice == '1': # creating an account and inserting the user into the database
             created_user = create_account()
             main_users.append(created_user)
-        
+
         elif choice == '2':
             if main_users:
                 found_user = access_user(main_users)
                 if found_user:
-                    print_variable_classes(variable_classes)
+                    old_password = input("Enter your old password: ")
+                    new_password = input("Enter your new password: ")
+                    found_user.change_password(old_password, new_password)
+                else:
+                    print("No matching account found. Please try again.")
+            else:
+                print("\n--------------------------------------------------------------------------------")
+                print("No accounts found. An account must be created first before changing your password")
+                print("---------------------------------------------------------------------------------")
+
+
+        elif choice == '3':
+            print("For this program , we are only going to take into account the classes that can differentiate each Information Science Student from another.")
+            print("These essentially include the four cognate areas: Cybersecurity & Privacy, Data Science, Digital Curation, and Health Information")
+            print_variable_classes(variable_classes)
+        
+        elif choice == '4':
+            if main_users:
+                found_user = access_user(main_users)
+                if found_user:
                     found_user.add_courses(variable_classes)
                 else: 
                     print("No matching account found.")
             else:    
                 print("\n-----------------------------------------------------------------------")
                 print("No accounts found. An account must be created first before depositing")
-                print("-----------------------------------------------------------------------")
-                
-        elif choice == '3':
+                print("-----------------------------------------------------------------------")            
+        
+        elif choice == '5':
             if main_users:
                 found_user = access_user(main_users)
                 if found_user:
                     found_user.recommend_career_paths(variable_classes)
-        elif choice == '4': # exiting program
-            print("Exiting program...")
+
+        elif choice == '6': # exiting program
+            print("Thank You For Using InfoVise!")
+            print("Exiting Program...")
             break
 
         else:
