@@ -1,79 +1,49 @@
 
-ischool_courses = {
-        "INST101": {"name": "Bits and Bytes of Computer and Information Sciences", "credits": "N/A"},
-        "INST104": {"name": "Design Across Campus", "credits": "N/A"},
-        "INST123": {"name": "Databases for All", "credits": "N/A"},
-        "INST126": {"name": "Introduction to Programming for Information Science", "credits": "N/A"},
-        "INST127": {"name": "Introduction to Programming for Information Science Lab", "credits": "N/A"},
-        "INST151": {"name": "Becoming A Social Media Influencer", "credits": "N/A"}, 
-        "INST152": {"name": "\"Fake Checking\": Battling Misinformation and Disinformation in the Real World", "credits": "N/A"},
-        "INST153": {"name": "Records Scandals & Data Vandals: Public & Private Sector Controversies Ripped From The Headlines","credits": "N/A"},
-        "INST154": {"name": "Apollo at 50","credits": "N/A"},
-        "INST155": {"name": "Social Networking","credits": "N/A"},
-        "INST156": {"name": "How NASA Sees the Earth","credits": "N/A"},
-        "INST201": {"name": "Introduction to Information Science","credits": "N/A"},
-        "INST204": {"name": "Designing Fair Systems","credits": "N/A"},
-        "INST208": {"name": "Special Topics in Information Studies","credits": "N/A"},
-        "INST210": {"name": "The Nuts & Bolts of Getting Hired","credits": "N/A"},
-        "INST227": {"name": "Fundamentals of Academic Peer Mentoring in Information Studies","credits": "N/A"},
-        "INST228": {"name": "Academic Peer Mentor Experience in Information Science","credits": "N/A"},
-        "INST232": {"name": "Health Justice: Investigating the Roles of Information in Preventing & Addressing Health Disparities","credits": "N/A"},
-        "INST301": {"name": "Introduction to Information Science","credits": "N/A"},
-        "INST308": {"name": "Education Abroad in Information Studies","credits": "N/A"},
-        "INST309": {"name": "Independent Study in Information Science","credits": "N/A"},
-        "INST311": {"name": "Information Organization","credits": "N/A"},
-        "INST314": {"name": "Statistics for Information Science","credits": "N/A"},
-        "INST326": {"name": "Object-Oriented Programming for Information Science","credits": "N/A"},
-        "INST327": {"name": "Database Design and Modeling","credits": "N/A"},
-        "INST335": {"name": "Organizations, Management and Teamwork","credits": "N/A"},
-        "INST341": {"name": "Introduction to Digital Curation","credits": "N/A"},
-        "INST346": {"name": "Technologies, Infrastructure and Architecture","credits": "N/A"},
-        "INST352": {"name": "Information User Needs and Assessment","credits": "N/A"},
-        "INST354": {"name": "Decision-Making for Information Science","credits": "N/A"},
-        "INST362": {"name": "User-Centered Design","credits": "N/A"},
-        "INST363": {"name": "Fundamentals of Technology Innovation","credits": "N/A"},
-        "INST364": {"name": "Human-Centered Cybersecurity","credits": "N/A"},
-        "INST365": {"name" : "Ethical Hacking","credits": "N/A"},
-        "INST366": {"name": "Privacy, Security and Ethics for Big Data","credits": "N/A"},
-        "INST367": {"name": "Prototyping and Development Studio","credits": "N/A"},
-        "INST370": {"name": "Information and Preparedness, Response and Recovery in Japan","credits": "N/A"},
-        "INST371": {"name": "Teaching and Learning in Information Studies","credits": "N/A"},
-        "INST377": {"name": "Dynamic Web Applications","credits": "N/A"},
-        "INST380": {"name": "Technology and Information Design: Do Good Now","credits": "N/A"},
-        "INST388": {"name": "\"Maker Movement\" Approach to Computing","credits": "N/A"},
-        "INST389": {"name": "Supervised Internship in Information Science","credits": "N/A"},
-        "INST398": {"name": "Special Topics in Information Studies","credits": "N/A"},
-        "INST401": {"name": "Design and Human Disability and Aging","credits": "N/A"},
-        "INST402": {"name": "Designing Patient-Centered Technologies", "credits": "N/A"},
-        "INST403": {"name": "Computational Journalism","credits": "N/A"},
-        "INST405": {"name": "Game Design","credits": "N/A"},
-        "INST406": {"name": "Cross Disciplinary Communication Lab", "credits": "N/A"},
-        "INST407": {"name": "Leading and Sustaining a Culture of Innovation", "credits": "N/A"},
-        "INST408": {"name": "Special Topics in Information Science", "credits": "N/A"},
-        "INST410": {"name": "Managing with Data and Simulations", "credits": "N/A"},
-        "INST414": { "name": "Data Science Techniques", "credits": "N/A"},
-        "INST441": {"name": "Information Ethics and Policy", "credits": "N/A"},
-        "INST442": {"name": "Digital Curation Across Disciplines", "credits": "N/A"},
-        "INST443": {"name": "Tools and Methods for Digital Curation", "credits": "N/A"},
-        "INST447": {"name": "Data Sources and Manipulation", "credits": "N/A"},
-        "INST448": {"name": "Digital Curation Research in Cultural Big Data Collections", "credits": "N/A"},
-        "INST450": {"name": "Introduction to CRM in Salesforce", "credits": "N/A"},
-        "INST451": {"name": "Consumer Health Informatics", "credits": "N/A"},
-        "INST452": {"name": "Health Data Analytics", "credits": "N/A"},
-        "INST453": {"name": "Project Management for Information Science", "credits": "N/A"},
-        "INST455": {"name": "Information Assurance and Compliance", "credits": "N/A"},
-        "INST456": {"name": "Risk Management Leadership in the Information Age", "credits": "N/A"},
-        "INST461": {"name": "Emerging Technologies and Risk Management", "credits": "N/A"},
-        "INST462": {"name": "Introduction to Data Visualization", "credits": "N/A"}, 
-        "INST463": {"name": "Technology Socialprenuer", "credits": "N/A"},
-        "INST464": {"name": "Decision Making for Cybersecurity", "credits": "N/A"},
-        "INST465": {"name": "Design and Human Disability and Aging", "credits": "N/A"},
-        "INST466": {"name": "Technology, Culture, and Society", "credits": "N/A"},
-        "INST467": {"name": "Fundamentals of Cybersecurity for Policy Makers", "credits": "N/A"},
-        "INST470": {"name": "Competitive Business Intelligence", "credits": "N/A"},
-        "INST490": {"name": "Integrated Capstone for Information Science", "credits": "N/A"}
-    }
+"""
 
+INST326 Final Project - Samuel Conteh 
+
+Documentation: 
+
+Our project is InfoVise, a terminal-based application that recommends the user potential career paths based on 
+classes that they have actually or hypothetically taken. We offer an account feature that allows one to create an account, 
+change their password if need be, print the available differntiable classes offered at the iSchool, and add courses to their 
+specific account.    
+
+Since our program runs off of terminal, all  one would need to do to run it is to enter "python/python3 final.py" within the 
+directory in which the file is located. Here's an example: 
+
+PS C:\Users\conte\OneDrive\Desktop\College\JUNIOR YEAR CLASSES\SPRING2024\INST326> python final.py
+
+Then, the user can interact with the number based menu system. To interact with it, all 
+you would need to do is enter the number that corresponds with the action that you would like to do and follow the instructions. 
+Once you make a number action, you cannot go back! To exit the program, you would press 6 and enter when on the main menu.
+
+Annotated Bibliography: 
+
+Diveintopython. (n.d.). Update(). Dive into Python: Free Tutorials, Books to Learn Python. 
+    https://diveintopython.org/functions/dictionary-methods/update
+
+
+    We utlized this website to better understand how to use update(). This built-in function aided us going into the self 
+    for the user and updating the possible career option for them. 
+
+    
+Programiz. (n.d.). Python Dictionary items(). Programiz: Learn to Code for Free. 
+    https://www.programiz.com/python-programming/methods/dictionary/items
+
+    To print out all of the Cognate Classes that one could take at the iSchool, we needed a for loop. And in that for loop, 
+    items was used to access the variable_classes dictionary. 
+
+Uejio, J. (n.d.). Immutable vs. Hashable – Real Python [Video]. Python Tutorials – Real Python. 
+    https://realpython.com/lessons/immutable-vs-hashable/
+
+    Throughout our code, we were facing issues with making sure that the courses taken and the potential career paths 
+    that the user could take were only mentioned once. This require us to understand mutability, hashability, and how that relates 
+    to lists vs. sets. This ultimately led use to using sets within our code. 
+"""
+
+# START OF CODE!
 variable_classes = {
     "INST341": {"name": "Introduction to Digital Curation","career_paths": ["Data Analyst", "Digital Archivist", "Digital Specialist", "UX/UI Development"], "credits": "N/A"},
     "INST354": {"name": "Decision-Making for Information Science","career_paths": ["Artificial Intelligence/Machine Learning", "Data Analyst", "Data Engineer", "Data Scientist"],"credits": "N/A"},
@@ -133,9 +103,9 @@ class User():
 
             # validate and add each course code to the courses_taken set
             for x in split_course_codes:
-                if x in variable_classes:
-                    course_info = variable_classes[x]
-                    self.courses_taken.add(x)
+                if x in variable_classes: # if the read course is in the variable_classes dictionary
+                    course_info = variable_classes[x] # set that position as course_info
+                    self.courses_taken.add(x) # adds the course taken into the specific profile
                     print(f"'{course_info['name']}' added to your account.")
                 else:
                     print(f"Invalid course code '{x}'. Please try again.")
@@ -155,8 +125,8 @@ class User():
             old_password: the users old password
             new_password: the password that the user would like to change to 
         """
-        if self.authenticate(old_password):
-            self.password = new_password
+        if self.authenticate(old_password): # once the authentication goes through 
+            self.password = new_password # set the user's password to whatever they input as the new_password 
             print("Password changed successfully!")
         else:
             print("Unable to change password: Incorrect old password.")
@@ -168,7 +138,7 @@ class User():
         """
         if self.courses_taken:
             print("Courses Taken:")
-            for course in self.courses_taken:
+            for course in self.courses_taken: # iterates through all of the courses taken and prints them out 
                 print(course)
         else:
             print("No courses taken yet.")
@@ -180,13 +150,16 @@ class User():
             variable_classes: reference to the variable_class dictionary (contains the classes that can 
             differentiate InfoSci students)
         """
-        if self.courses_taken:
-            for course in self.courses_taken:
-                if course in variable_classes:
-                    possible_career_paths = variable_classes[course].get("career_paths", [])
+        if self.courses_taken: # if within courses taken by the user 
+            for course in self.courses_taken: # initiate a for loop that determines 
+                if course in variable_classes: # the specific courses that is within variable_classes
+                    # get the associated potential career paths   
+                    possible_career_paths = variable_classes[course].get("career_paths", []) 
+                    # and update it within the users career_path set 
                     self.career_paths.update(possible_career_paths)
 
-            if self.career_paths:
+            # prints it out
+            if self.career_paths:  
                 print("\nRecommended Career Paths:")
                 for path in self.career_paths:
                     print(path)
@@ -202,6 +175,7 @@ def access_user(main_users):
     Arguments: 
         main_users: the list that the objects are being put in
     """
+    # ask for the user's username and password 
     print("Enter your username and password for the account you would like to access: ")
     entered_username = input("Username: ")
     entered_password = input("Password: ")
@@ -220,19 +194,21 @@ def create_account():
     Arguments: None
     """
     # Getting User Details
-    print("\n*********************************")
+    print("\n*****************************************************")
     print("* ACCOUNT CREATION - ENTER ALL INFORMATION AS SHOWN *")
-    print("*********************************")
+    print("*****************************************************")
 
+    # obtain all of the user's important information 
     fname = input("Enter your first name: ")
     lname = input("Enter your last name: ")
     username = input("Enter your username: ")
     password = input("Enter your new password: ")
 
+    # print it out for the user 
     print("Entered username:", username)
     print("Entered password:", password)
 
-    created_user = User( username, password, fname, lname) # creation of the instance of the user class  
+    created_user = User(username, password, fname, lname) # creation of the instance of the user class  
     print("\nAccount Created!\n")
     return created_user
 
@@ -241,9 +217,20 @@ def print_info_header():
     Purpose: Simple print statement to welcome the user 
     Arguments: None 
     """
-    print("\n*********************************")
+    print("\n********************************")
     print("* WELCOME TO INFOVISE DATABASE *")
-    print("*********************************")
+    print("********************************")
+
+def print_goodbye():
+    """
+    Purpose: Simple print statement to saying farewell the user 
+    Arguments: None 
+    """
+    print("\n********************************")
+    print("* THANK YOU FOR USING INFOVISE! *")
+    print("********************************")
+
+    print("Exiting Program...")
 
 def print_menu_options():
     """
@@ -252,11 +239,12 @@ def print_menu_options():
     """
     print("\nOptions")
     print("1. Create a New Account")
-    print("2. Change Password")
-    print("3. Print Available Classes")
-    print("4. Add Courses to Account")
-    print("5. Display Courses Taken")
-    print("6. Exit Program")
+    print("2. Add Courses to Account")
+    print("3. Change Password")
+    print("4. Print Classes Offered By iSchool")
+    print("5. Print Courses Taken By User")
+    print("6. Recommend Career Paths")
+    print("7. Exit Program")
 
 def print_no_accounts(): 
     """
@@ -285,7 +273,7 @@ def main():
     while True:
         print_menu_options()
 
-        choice = input("Enter your choice (1-5): ")
+        choice = input("Enter your choice (1-7): ")
 
         if choice == '1': # creating an account and inserting the user into the database
             created_user = create_account()
@@ -295,43 +283,43 @@ def main():
             if main_users:
                 found_user = access_user(main_users)
                 if found_user:
+                    found_user.add_courses(variable_classes)
+                else: 
+                    print("No matching account found.")
+            else:    
+                print_no_accounts()
+
+        elif choice == '3':
+            if main_users:
+                found_user = access_user(main_users)
+                if found_user:
                     old_password = input("Enter your old password: ")
                     new_password = input("Enter your new password: ")
                     found_user.change_password(old_password, new_password)
                 else:
                     print("No matching account found. Please try again.")
             else:
-                print("\n--------------------------------------------------------------------------------")
-                print("No accounts found. An account must be created first before changing your password")
-                print("---------------------------------------------------------------------------------")
+                print_no_accounts()
 
-
-        elif choice == '3':
+        elif choice == '4':
             print("For this program , we are only going to take into account the classes that can differentiate each Information Science Student from another.")
             print("These essentially include the four cognate areas: Cybersecurity & Privacy, Data Science, Digital Curation, and Health Information")
             print_variable_classes(variable_classes)
-        
-        elif choice == '4':
-            if main_users:
-                found_user = access_user(main_users)
-                if found_user:
-                    found_user.add_courses(variable_classes)
-                else: 
-                    print("No matching account found.")
-            else:    
-                print("\n-----------------------------------------------------------------------")
-                print("No accounts found. An account must be created first before depositing")
-                print("-----------------------------------------------------------------------")            
         
         elif choice == '5':
             if main_users:
                 found_user = access_user(main_users)
                 if found_user:
+                    found_user.print_courses_taken()
+        
+        elif choice == '6':
+            if main_users:
+                found_user = access_user(main_users)
+                if found_user:
                     found_user.recommend_career_paths(variable_classes)
 
-        elif choice == '6': # exiting program
-            print("Thank You For Using InfoVise!")
-            print("Exiting Program...")
+        elif choice == '7': # exiting program
+            print_goodbye()
             break
 
         else:
